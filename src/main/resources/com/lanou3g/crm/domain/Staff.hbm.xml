@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou3g.crm.domain">
+
+    <class name="Staff" table="T_STAFF">
+        <id name="id" column="STAFF_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+        <property name="age"/>
+        <property name="gender"/>
+
+        <many-to-one name="dept"
+                     class="Department"
+                     column="DEPT_ID"
+                     cascade="save-update"
+                     lazy="false"/>
+
+        <many-to-one name="post"
+                     class="Post"
+                     column="POST_ID"
+                     cascade="save-update"
+                     lazy="false"/>
+
+    </class>
+
+</hibernate-mapping>

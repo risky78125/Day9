@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.lanou3g.crm.domain">
+
+    <class name="Post" table="T_POST">
+        <id name="id" column="POST_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+
+        <many-to-one name="dept"
+                     class="Department"
+                     column="DEPT_ID"
+                     cascade="save-update"/>
+
+        <set name="staffs"
+             table="T_STAFF"
+             cascade="save-update"
+             inverse="true">
+            <key column="POST_ID"/>
+            <one-to-many class="Staff"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>
